@@ -25,9 +25,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard')
     ->middleware('auth');
 
-Route::get('/posts', [PostsController::class, 'index'])
-    ->name('posts')
-    ->middleware('auth');;
+Route::get('/posts', [PostsController::class, 'index'])->name('posts');
+Route::post('/posts', [PostsController::class, 'store']);
 
 Route::get('/register', [RegisterController::class, 'index'])
     ->name('register')
