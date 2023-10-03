@@ -18,14 +18,24 @@ use App\Http\Controllers\Posts\PostsController;
 |
 */
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard')
+    ->middleware('auth');
 
-Route::get('/posts', [PostsController::class, 'index'])->name('posts');
+Route::get('/posts', [PostsController::class, 'index'])
+    ->name('posts')
+    ->middleware('auth');;
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::get('/register', [RegisterController::class, 'index'])
+    ->name('register')
+    ->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])
+    ->name('login')
+    ->middleware('guest');
 Route::post('/login', [LoginController::class, 'store']);
 
-Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+Route::post('/logout', [LogoutController::class, 'store'])
+    ->name('logout')
+    ->middleware('auth');;
