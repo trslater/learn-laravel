@@ -41,11 +41,11 @@
                             <form action="{{ route('posts.likes', $post) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="bg-blue-600 text-white text-xs p-1 rounded-lg" name="unlike">Unlike</button>
+                                <button class="bg-blue-600 text-white text-xs p-1 rounded-lg mr-1" name="unlike">Unlike</button>
                             </form>
                             @endif
                             @endif
-                            <div class="ml-1">{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</div>
+                            <div>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</div>
                         </div>
                     </li>
                     @endforeach
