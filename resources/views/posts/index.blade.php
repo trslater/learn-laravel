@@ -31,6 +31,8 @@
                         </div>
                     </li>
                     @endforeach
+
+                    {{ $posts->links() }}
                 </ol>
                 @else
                 No posts :(
