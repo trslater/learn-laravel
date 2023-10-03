@@ -27,7 +27,7 @@
         <ul class="flex items-center">
             @if(auth()->user())
             <li>
-                <a href="#" class="p-3">Name</a>
+                <a href="#" class="p-3">{{ auth()->user()->name }}</a>
             </li>
 
             <li>
