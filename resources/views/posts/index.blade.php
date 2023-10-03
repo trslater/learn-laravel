@@ -14,7 +14,7 @@
                     @enderror
                 </label>
 
-                <button class="w-full bg-blue-600 text-white p-4" name="login">Login</button>
+                <button class="w-full bg-blue-600 text-white p-4" name="post">Post</button>
             </form>
 
             <div>
