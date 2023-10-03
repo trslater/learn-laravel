@@ -14,7 +14,7 @@
                     @enderror
                 </label>
 
-                <button class="w-full bg-blue-600 text-white p-4" name="post">Post</button>
+                <button class="w-full bg-blue-600 text-white p-3 rounded-lg" name="post">Post</button>
             </form>
 
             <div>
@@ -28,6 +28,22 @@
 
                         <div>
                             {{ $post->body }}
+                        </div>
+
+                        <div class="flex items-center">
+                            @if (!$post->isLikedBy(auth()->user()))
+                            <form action="{{ route('posts.likes', $post) }}" method="post">
+                                @csrf
+                                <button class="bg-blue-600 text-white text-xs p-1 rounded-lg mr-1" name="like">Like</button>
+                            </form>
+                            @else
+                            <form action="{{ route('posts.likes', $post) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="bg-blue-600 text-white text-xs p-1 rounded-lg" name="unlike">Unlike</button>
+                            </form>
+                            @endif
+                            <div class="ml-1">{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</div>
                         </div>
                     </li>
                     @endforeach

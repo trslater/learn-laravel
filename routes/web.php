@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Posts\PostsController;
+use App\Http\Controllers\Posts\PostLikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 Route::get('/posts', [PostsController::class, 'index'])->name('posts');
 Route::post('/posts', [PostsController::class, 'store']);
+
+Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
+Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy']);
 
 Route::get('/register', [RegisterController::class, 'index'])
     ->name('register')
