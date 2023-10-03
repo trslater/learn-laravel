@@ -26,7 +26,7 @@
                             Posted by <span>{{ $post->user->name }}</span>, <span>{{ $post->created_at->diffforhumans() }}</span>
                         </div>
 
-                        <div class="p-3 border-2 border-solid border-gray-300">
+                        <div>
                             {{ $post->body }}
                         </div>
                     </li>
