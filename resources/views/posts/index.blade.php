@@ -16,6 +16,26 @@
 
                 <button class="w-full bg-blue-600 text-white p-4" name="login">Login</button>
             </form>
+
+            <div>
+                @if ($posts->count())
+                <ol>
+                    @foreach ($posts as $post)
+                    <li class="mt-4">
+                        <div class="text-xs">
+                            Posted by <span>{{ $post->user->name }}</span>, <span>{{ $post->created_at->diffforhumans() }}</span>
+                        </div>
+
+                        <div class="p-3 border-2 border-solid border-gray-300">
+                            {{ $post->body }}
+                        </div>
+                    </li>
+                    @endforeach
+                </ol>
+                @else
+                No posts :(
+                @endif
+            </div>
         </div>
     </div>
 @endsection
