@@ -31,7 +31,11 @@
             </li>
 
             <li>
-                <a href="#" class="p-3">Logout</a>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+
+                    <button name="logout">Logout</button>
+                </form>
             </li>
             @else
             <li>
