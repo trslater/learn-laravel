@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Posts\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,7 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::get('/posts', function () {
-    return view('posts.index');
-});
+Route::get('/posts', [PostsController::class, 'index'])->name('posts');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('posts');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
