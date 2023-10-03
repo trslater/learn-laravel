@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Posts\PostsController;
 
 /*
@@ -17,6 +18,8 @@ use App\Http\Controllers\Posts\PostsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard')
