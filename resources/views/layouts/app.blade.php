@@ -25,10 +25,15 @@
         </ul>
         
         <ul class="flex items-center">
+            @if(auth()->user())
             <li>
                 <a href="#" class="p-3">Name</a>
             </li>
-            
+
+            <li>
+                <a href="#" class="p-3">Logout</a>
+            </li>
+            @else
             <li>
                 <a href="#" class="p-3">Login</a>
             </li>
@@ -36,10 +41,7 @@
             <li>
                 <a href="{{ route('register') }}" class="p-3">Register</a>
             </li>
-            
-            <li>
-                <a href="#" class="p-3">Logout</a>
-            </li>
+            @endif
         </ul>
     </nav>
 
