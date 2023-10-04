@@ -23,4 +23,14 @@ class PostsController extends Controller
 
         return redirect()->route('posts');
     }
+    
+    public function destroy(Post $post, Request $request) {
+        if ($post->user != auth()->user()) {
+            return response(null, 403);
+        }
+
+        $post->delete();
+
+        return redirect()->route('posts');
+    }
 }

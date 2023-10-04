@@ -21,7 +21,7 @@
                 @if ($posts->count())
                 <ol>
                     @foreach ($posts as $post)
-                    <li class="mt-4">
+                    <li class="mt-5">
                         <div class="text-xs">
                             Posted by <span>{{ $post->user->name }}</span>, <span>{{ $post->created_at->diffforhumans() }}</span>
                         </div>
@@ -42,6 +42,13 @@
                                 @csrf
                                 @method('DELETE')
                                 <button class="bg-blue-600 text-white text-xs p-1 rounded-lg mr-1" name="unlike">Unlike</button>
+                            </form>
+                            @endif
+                            @if ($post->user == auth()->user())
+                            <form action="{{ route('posts.destroy', $post) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="bg-red-600 text-white text-xs p-1 rounded-lg mr-1" name="delete">Delete</button>
                             </form>
                             @endif
                             @endif
