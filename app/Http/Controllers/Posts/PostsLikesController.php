@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostLikeController extends Controller
+class PostsLikesController extends Controller
 {
     public function store(Post $post, Request $request) {
         if ($post->isLikedBy($request->user())) {

@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Posts\PostsController;
-use App\Http\Controllers\Posts\PostLikeController;
+use App\Http\Controllers\Posts\PostsLikesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +30,8 @@ Route::get('/posts', [PostsController::class, 'index'])->name('posts');
 Route::post('/posts', [PostsController::class, 'store']);
 Route::delete('/posts/{post}', [PostsController::class, 'destroy'])->name('posts.destroy');
 
-Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
-Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy']);
+Route::post('/posts/{post}/likes', [PostsLikesController::class, 'store'])->name('posts.likes');
+Route::delete('/posts/{post}/likes', [PostsLikesController::class, 'destroy']);
 
 Route::get('/register', [RegisterController::class, 'index'])
     ->name('register')
