@@ -25,9 +25,7 @@ class PostsController extends Controller
     }
     
     public function destroy(Post $post, Request $request) {
-        if ($post->user != auth()->user()) {
-            return response(null, 403);
-        }
+        $this->authorize('delete', $post);
 
         $post->delete();
 
