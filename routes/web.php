@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Posts\PostsController;
 use App\Http\Controllers\Posts\PostsLikesController;
+use App\Http\Controllers\Users\UsersPostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::delete('/posts/{post}', [PostsController::class, 'destroy'])->name('posts
 
 Route::post('/posts/{post}/likes', [PostsLikesController::class, 'store'])->name('posts.likes');
 Route::delete('/posts/{post}/likes', [PostsLikesController::class, 'destroy']);
+
+Route::get('/users/{user:username}/posts', [UsersPostsController::class, 'index'])->name('users.posts');
 
 Route::get('/register', [RegisterController::class, 'index'])
     ->name('register')

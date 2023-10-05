@@ -22,45 +22,14 @@
                 <ol>
                     @foreach ($posts as $post)
                     <li class="mt-5">
-                        <div class="text-xs">
-                            Posted by <span>{{ $post->user->name }}</span>, <span>{{ $post->created_at->diffforhumans() }}</span>
-                        </div>
-
-                        <div>
-                            {{ $post->body }}
-                        </div>
-
-                        <div class="flex items-center">
-                            @if(auth()->user())
-                            @if (!$post->isLikedBy(auth()->user()))
-                            <form action="{{ route('posts.likes', $post) }}" method="post">
-                                @csrf
-                                <button class="bg-blue-600 text-white text-xs p-1 rounded-lg mr-1" name="like">Like</button>
-                            </form>
-                            @else
-                            <form action="{{ route('posts.likes', $post) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="bg-blue-600 text-white text-xs p-1 rounded-lg mr-1" name="unlike">Unlike</button>
-                            </form>
-                            @endif
-                            @can('delete', $post)
-                            <form action="{{ route('posts.destroy', $post) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="bg-red-600 text-white text-xs p-1 rounded-lg mr-1" name="delete">Delete</button>
-                            </form>
-                            @endcan
-                            @endif
-                            <div>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</div>
-                        </div>
+                        <x-post :post="$post" />
                     </li>
                     @endforeach
 
                     {{ $posts->links() }}
                 </ol>
                 @else
-                No posts :(
+                No one has posted anything yet.
                 @endif
             </div>
         </div>
