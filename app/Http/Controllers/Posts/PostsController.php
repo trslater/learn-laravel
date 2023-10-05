@@ -13,6 +13,10 @@ class PostsController extends Controller
             'posts' => Post::with(['user', 'likes'])->paginate(10),
         ]);
     }
+
+    public function show(Post $post) {
+        return view('posts.show', ['post' => $post]);
+    }
     
     public function store(Request $request) {
         $this->validate($request, [
