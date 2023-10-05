@@ -3,6 +3,7 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
+            @auth
             <form action="{{ route('posts') }}" method="post">
                 @csrf
 
@@ -16,6 +17,7 @@
 
                 <button class="w-full bg-blue-600 text-white p-3 rounded-lg" name="post">Post</button>
             </form>
+            @endauth
 
             <div>
                 @if ($posts->count())
